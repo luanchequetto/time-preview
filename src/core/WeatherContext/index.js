@@ -7,6 +7,7 @@ export const WeatherProvider = ({ children }) =>{
 
     const [searchData ,setSearchData] = useState()
     const [selectedData ,setSelectedData] = useState()
+    const [selectedCardIndex ,setSelectedCardIndex] = useState()
     const [city, setCity] = useState()
 
     const [preferences, setPreferences] = useState({
@@ -14,7 +15,7 @@ export const WeatherProvider = ({ children }) =>{
     })
 
     return(
-        <WeatherContext.Provider value={{searchData, city, setCity, setSearchData, preferences, setPreferences, selectedData, setSelectedData}}>
+        <WeatherContext.Provider value={{searchData, city, setCity, setSearchData, preferences, setPreferences, selectedData, setSelectedData, selectedCardIndex, setSelectedCardIndex}}>
             {children}
         </WeatherContext.Provider>
     )
