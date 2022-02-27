@@ -7,7 +7,7 @@ export const Tools = styled.div`
     width: 60px;
     border: none;
     border-radius: 10px;
-    background-color: ${props => props.theme.sidebarColor};
+    background-color: #462A5A;
     display: flex;
     flex-direction: column;
 

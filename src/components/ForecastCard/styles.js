@@ -12,13 +12,6 @@ export const Card = styled.div`
     margin-right: 16px;
     margin-bottom: 16px;
     font-family: "Roboto", sans-serif;
-    &.active{
-        backdrop-filter: brightness(0.8);
-        box-shadow:
-        0 8px 8px rgba(0, 0, 0, 0.06),
-        0 24px 64px rgba(0, 0, 0, 0.12);
-        border: none;
-    }
     &:hover{
         cursor: pointer;
         backdrop-filter: brightness(0.8);

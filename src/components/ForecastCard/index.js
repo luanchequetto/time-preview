@@ -3,34 +3,23 @@ import { WeatherContext } from "../../core/WeatherContext"
 import { dateConvert } from "../../utils/date"
 import { Card } from "./styles"
 
-export const ForecastCard = ({item, index}) => {
+export const ForecastCard = (props) => {
     const weatherContext = useContext(WeatherContext)
-    const weatherIcon = item.weather[0].main.toLowerCase()
+    const weatherIcon = props.item.weather[0].main.toLowerCase()
 
-    function handleActive(e){  
-        weatherContext.setSelectedData(item)
-        weatherContext.setSelectedCardIndex(index)
-
-        let elements = document.querySelectorAll('.effect')
-        elements.forEach((element) =>{
-            element.classList.add('active')
-            setTimeout(() => {
-                element.classList.remove('active')
-            }, 500);
-        })
-        
+    function handleActive(e){
+        weatherContext.setSelectedData(props.item)
         
     }
 
-    
     return (
-        <Card onClick={(e) => handleActive(e)} className={weatherContext.selectedCardIndex === index ? "active" : ''}>
+        <Card onClick={(e) => weatherContext.setSelectedData(props.item)}>
             <img src={require(`../../assets/${weatherIcon}.png`)} alt="" />
-            <span className="week-day">{dateConvert(item.dt)}</span>
-            <h2>{item.temp.day} ºC</h2>
+            <span className="week-day">{dateConvert(props.item.dt)}</span>
+            <h2>{props.item.temp.day} ºC</h2>
             <div>
-            <span>{item.wind_speed} m/s</span>
-            <span>clouds: {item.clouds} %</span>
+            <span>{props.item.wind_speed} m/s</span>
+            <span>clouds: {props.item.clouds} %</span>
             </div>
         </Card>
     )

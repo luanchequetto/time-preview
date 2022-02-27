@@ -41,9 +41,7 @@ export const CitySearch = () => {
                     .then((response) => {
                         console.log('searchData', response.data)
                         weatherContext.setSearchData(response.data)
-                        weatherContext.setSelectedData(undefined)
-                        weatherContext.setSelectedCardIndex()
-                        
+                        weatherContext.setSelectedData("")
                     })
             })
     }
