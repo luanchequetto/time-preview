@@ -9,6 +9,10 @@ export const Wrapper = styled.div`
     background: #FFF;
     border-radius: 30px;
     padding: 24px;
+        &.active{
+            animation: transitionEffect 0.5s forwards;
+        }
+
 `
 
 export const CardHeader = styled.section`
@@ -39,6 +43,9 @@ width: calc(100% + 48px); // dobro do padding Wrapper
 margin-left: -24px;
 margin-right: -24px;
 height: 50%;
+&.active{
+            animation: transitionEffect 0.5s forwards;
+        }
 
 `
 
@@ -74,11 +81,26 @@ export const TemperatureWrapper = styled.div`
         font-weight: bold;
     }
 
+    @keyframes transitionEffect{
+        from{
+            opacity: 0;
+            transform: translate3d(-30px, 0, 0)
+        }
+        to{
+            opacity: 1;
+            transform: translate3d(0, 0, 0)
+        }
+        
+    }
+
 `
 
 export const SomeInfos = styled.section`
     border-top: solid 1px #8D7C99;
     padding: 24px 16px;
     height: 35%;
+    &.active{
+        animation: transitionEffect 0.5s forwards;
+    }
 `
 

@@ -1,4 +1,5 @@
 import { useContext } from "react"
+import { useTheme } from "styled-components"
 import { WeatherContext } from "../../core/WeatherContext"
 import { dateConvert } from "../../utils/date"
 import { handleDegConvert } from "../../utils/degConvert"
@@ -18,21 +19,24 @@ export const SelectedCard = () => {
         data = allData && allData.current
     }
     
+    const theme = useTheme()
+
+    console.log('theme', theme)
 
     const temperatureBackground = require("../../assets/cloud-background.png")
     const weatherIcon = data ? data.weather[0].main.toLowerCase() : "clouds"
 
     return (
         <Wrapper>
-            <CardHeader>
+            <CardHeader className="effect">
                 <div>
-                    <p>Hoje</p>
+                    <p>{data ? dateConvert(data.dt, "weekdayfull") : ""}</p>
                     <h2>{weatherContext.city ? weatherContext.city : ""}</h2>
                 </div>
                 <img src={require(`../../assets/${weatherIcon}-dark.png`)} alt="icon"></img>
             </CardHeader>
 
-            <CardTemperature >
+            <CardTemperature className="effect">
                 <TemperatureWrapper bg={temperatureBackground} unit={preferences.units === "metric" ? "ºC" : "ºF"}>
                     <h2>{data ? parseInt(data.temp.day ? data.temp.day : data.temp) : "0"}</h2>
                     <p>{data ? data.weather[0].description[0].toUpperCase() + data.weather[0].description.substr(1) : ""}</p>
@@ -40,7 +44,7 @@ export const SelectedCard = () => {
                 </TemperatureWrapper>
             </CardTemperature >
 
-            <SomeInfos>
+            <SomeInfos className="effect">
                 {data ?
                     <ul>
                         <SelectedInfoItem title={'Wind'} data={`${data.wind_speed} m/s, ${handleDegConvert(data.wind_deg)} (${data.wind_deg})`} />
