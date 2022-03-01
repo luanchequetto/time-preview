@@ -4,9 +4,9 @@ export const Card = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 1fr 1fr;
-    width: auto;
+    width: 160px;
     height: 230px;
-    border: 1px solid #707070;
+    border: 1px solid ${props => props.theme.textSecondColor};
     border-radius: 30px;
     padding: 16px;
     margin-right: 16px;
@@ -41,12 +41,12 @@ export const Card = styled.div`
         grid-row: 1;
         text-align: right;
         font-size: 12px;
-        color: #8D7C99;
+        color: ${props => props.theme.textSecondColor};
     }
     h2{
         font-size: 16px;
         font-weight: bold;
-        color: #FFF;
+        color: ${props => props.theme.textPrimaryColor};
         grid-column: 1/2;
         text-align: left;
         margin-bottom: 0;
@@ -56,7 +56,7 @@ export const Card = styled.div`
     div{
         font-size: 14px;
         font-family: "Roboto", sans-serif;
-        color: #8D7C99;
+        color: ${props => props.theme.textSecondColor};
         grid-column: 1/3;
         grid-row: 3;
         text-align: left;

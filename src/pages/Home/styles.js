@@ -9,11 +9,20 @@ export const Container = styled.div`
     .wrapper{
         width: 100%;
     }
+    @media (max-width: 991px) {
+    width: 90%;
+    height: auto;
+}
 `
 
 export const PageWrapper = styled.div`
 display: flex;
-background: #5C3975;
+background: linear-gradient(${props => props.theme.backgroundPrimaryColor}, ${props => props.theme.backgroundSecondColor});
 width: 100%;
 height: 100%;
+
+@media (max-width: 991px) {
+    flex-direction: column;
+    height: auto;
+}
 `

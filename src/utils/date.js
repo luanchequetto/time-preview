@@ -18,8 +18,6 @@ export const dateConvert = (unixDate, option)=>{
     }
     if(option === "weekdayfull"){
 
-        console.log(dateNow )
-        console.log(dateNow.getDay(), weekDay )
         switch (weekDay) {
             case 0:
                 return("Domingo")

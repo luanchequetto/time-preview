@@ -7,6 +7,8 @@ export const ForecastCard = ({item, index}) => {
     const weatherContext = useContext(WeatherContext)
     const weatherIcon = item.weather[0].main.toLowerCase()
 
+    const {customTheme} = weatherContext
+
     function handleActive(e){  
         weatherContext.setSelectedData(item)
         weatherContext.setSelectedCardIndex(index)
@@ -24,10 +26,10 @@ export const ForecastCard = ({item, index}) => {
 
     
     return (
-        <Card onClick={(e) => handleActive(e)} className={weatherContext.selectedCardIndex === index ? "active" : ''}>
+        <Card onClick={(e) => handleActive(e)} theme={customTheme.theme} className={weatherContext.selectedCardIndex === index ? "active" : ''}>
             <img src={require(`../../assets/${weatherIcon}.png`)} alt="" />
             <span className="week-day">{dateConvert(item.dt)}</span>
-            <h2>{item.temp.day} ºC</h2>
+            <h2>{item.temp.day} {weatherContext.preferences.units === "metric" ? "ºC" : "ºF"}</h2>
             <div>
             <span>{item.wind_speed} m/s</span>
             <span>clouds: {item.clouds} %</span>

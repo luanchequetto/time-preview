@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Title = styled.div`
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    color: #fff;
+    color: ${props => props.theme.textPrimaryColor};
     h2{
         margin-bottom: 8px;
         margin-top: initial;
@@ -22,16 +22,19 @@ margin-top: 32px;
 `
 
 export const Input = styled.input`
-    border: solid 1px #707070;
+    border: solid 1px ${props => props.theme.textSecondColor};
     border-radius: 20px;
     padding: 16px;
     width: 100%;
     background: transparent;
-    color: #FFF;
-    border: solid 1px #707070;
+    color: ${props => props.theme.textPrimaryColor};
+    border: solid 1px ${props => props.theme.textSecondColor};
     &:focus-visible{
         outline: none;
-        border-color: #FFF;
+        border-color: ${props => props.theme.textPrimaryColor};
+    }
+    &::placeholder{
+        color: ${props => props.theme.textSecondColor};
     }
     
 `

@@ -13,6 +13,19 @@ export const Wrapper = styled.div`
             animation: transitionEffect 0.5s forwards;
         }
 
+        @media (max-width: 991px) {
+    width: 100%;
+    height: auto;
+    margin: 32px 0;
+    border-radius: initial;
+    &:last-child{
+        margin-bottom: initial;
+    }
+    &.hidden{
+        display: none;
+    }
+}
+
 `
 
 export const CardHeader = styled.section`
@@ -36,18 +49,28 @@ export const CardHeader = styled.section`
     img{
         height: 96px;
     }
+    @media (max-width: 991px) {
+        height: auto;
+        margin-bottom: 32px;
+        div{
+            font-size: 24px;
+        }
+    }
 `
 
 export const CardTemperature = styled.section`
-width: calc(100% + 48px); // dobro do padding Wrapper
-margin-left: -24px;
-margin-right: -24px;
-height: 50%;
-&.active{
-            animation: transitionEffect 0.5s forwards;
-        }
-
+    width: calc(100% + 48px); // dobro do padding Wrapper
+    margin-left: -24px;
+    margin-right: -24px;
+    height: 50%;
+    &.active{
+        animation: transitionEffect 0.5s forwards;
+    }
+    &.hidden{
+        display: none;
+    }
 `
+
 
 export const TemperatureWrapper = styled.div`
     display: flex;
@@ -92,7 +115,9 @@ export const TemperatureWrapper = styled.div`
         }
         
     }
-
+    @media (max-width: 991px) {
+        background: ${props => `url(${props.bg}) repeat bottom`};
+}
 `
 
 export const SomeInfos = styled.section`
@@ -101,6 +126,9 @@ export const SomeInfos = styled.section`
     height: 35%;
     &.active{
         animation: transitionEffect 0.5s forwards;
+    }
+    @media (max-width: 991px) {
+        margin-bottom: 32px;
     }
 `
 

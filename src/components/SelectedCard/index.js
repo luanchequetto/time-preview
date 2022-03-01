@@ -21,13 +21,12 @@ export const SelectedCard = () => {
     
     const theme = useTheme()
 
-    console.log('theme', theme)
 
     const temperatureBackground = require("../../assets/cloud-background.png")
     const weatherIcon = data ? data.weather[0].main.toLowerCase() : "clouds"
 
     return (
-        <Wrapper>
+        <Wrapper className={data ? "" : "hidden"}>
             <CardHeader className="effect">
                 <div>
                     <p>{data ? dateConvert(data.dt, "weekdayfull") : ""}</p>
@@ -36,7 +35,7 @@ export const SelectedCard = () => {
                 <img src={require(`../../assets/${weatherIcon}-dark.png`)} alt="icon"></img>
             </CardHeader>
 
-            <CardTemperature className="effect">
+            <CardTemperature className={`effect`}>
                 <TemperatureWrapper bg={temperatureBackground} unit={preferences.units === "metric" ? "ºC" : "ºF"}>
                     <h2>{data ? parseInt(data.temp.day ? data.temp.day : data.temp) : "0"}</h2>
                     <p>{data ? data.weather[0].description[0].toUpperCase() + data.weather[0].description.substr(1) : ""}</p>
@@ -47,13 +46,13 @@ export const SelectedCard = () => {
             <SomeInfos className="effect">
                 {data ?
                     <ul>
-                        <SelectedInfoItem title={'Wind'} data={`${data.wind_speed} m/s, ${handleDegConvert(data.wind_deg)} (${data.wind_deg})`} />
-                        <SelectedInfoItem title={"Cloudiness"} data={data.weather[0].description[0].toUpperCase() + data.weather[0].description.substr(1)} />
-                        <SelectedInfoItem title={"Pressure"} data={`${data.pressure} hpa`} />
-                        <SelectedInfoItem title={"Humidity"} data={`${data.humidity} %`} />
-                        <SelectedInfoItem title={"Sunrise"} data={dateConvert(data.sunrise, "cardsInfo")} />
-                        <SelectedInfoItem title={"Sunset"} data={dateConvert(data.sunset, "cardsInfo")} />
-                        <SelectedInfoItem title={"Geo coords"} data={`[${parseFloat(weatherContext.searchData.lat).toFixed(2)}, ${parseFloat(weatherContext.searchData.lon).toFixed(2)}]`} />
+                        <SelectedInfoItem title={'Vento'} data={`${data.wind_speed} m/s, ${handleDegConvert(data.wind_deg)} (${data.wind_deg})`} />
+                        <SelectedInfoItem title={"Nebulosidade"} data={data.weather[0].description[0].toUpperCase() + data.weather[0].description.substr(1)} />
+                        <SelectedInfoItem title={"Pressão atmosférica"} data={`${data.pressure} hpa`} />
+                        <SelectedInfoItem title={"Umidade"} data={`${data.humidity} %`} />
+                        <SelectedInfoItem title={"Nascer do Sol"} data={dateConvert(data.sunrise, "cardsInfo")} />
+                        <SelectedInfoItem title={"Pôr do Sol"} data={dateConvert(data.sunset, "cardsInfo")} />
+                        <SelectedInfoItem title={"Coordenatas"} data={`[${parseFloat(weatherContext.searchData.lat).toFixed(2)}, ${parseFloat(weatherContext.searchData.lon).toFixed(2)}]`} />
                     </ul>
                     :
                     <></>

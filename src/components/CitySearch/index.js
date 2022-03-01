@@ -8,6 +8,7 @@ import { WeatherContext } from "../../core/WeatherContext"
 export const CitySearch = () => {
     const [citySearch, setCitySearch] = useState("")
     const weatherContext = useContext(WeatherContext)
+    const {customTheme} = weatherContext
 
 
     const handleSubmit = (e) => {
@@ -35,11 +36,10 @@ export const CitySearch = () => {
                         lon: lon,
                         lang: 'pt_br',
                         appid: "8d1104ad895fdb351658ff5a27cd5d47",
-                        units: "metric",
+                        units: weatherContext.preferences.units,
                     }
                 })
                     .then((response) => {
-                        console.log('searchData', response.data)
                         weatherContext.setSearchData(response.data)
                         weatherContext.setSelectedData(undefined)
                         weatherContext.setSelectedCardIndex()
@@ -49,12 +49,12 @@ export const CitySearch = () => {
     }
     return (
         <div className="wrapper">
-            <Title>
+            <Title theme={customTheme.theme}>
                 <h2>Seja bem Vindo</h2>
                 <h2><span>Selecione uma cidade</span></h2>
             </Title>
             <FormWrapper searchIcon="../..assets/search.png" onSubmit={handleSubmit}>
-                <Input placeholder='Pesquisar por cidade' value={citySearch} onChange={(e) => setCitySearch(e.target.value)} />
+                <Input theme={customTheme.theme} placeholder='Pesquisar por cidade' value={citySearch} onChange={(e) => setCitySearch(e.target.value)} />
                 <Button type="submit">
                     <Icon src={iconSearch} alt="search-icon" />
                 </Button>
