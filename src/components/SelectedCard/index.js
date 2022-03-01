@@ -4,7 +4,7 @@ import { WeatherContext } from "../../core/WeatherContext"
 import { dateConvert } from "../../utils/date"
 import { handleDegConvert } from "../../utils/degConvert"
 import { SelectedInfoItem } from "../SelectedInfoItem"
-import { CardHeader, CardTemperature, Item, SomeInfos, TemperatureWrapper, Wrapper } from "./styles"
+import { CardHeader, CardTemperature, SomeInfos, TemperatureWrapper, Wrapper } from "./styles"
 
 export const SelectedCard = () => {
 
@@ -19,9 +19,6 @@ export const SelectedCard = () => {
         data = allData && allData.current
     }
     
-    const theme = useTheme()
-
-
     const temperatureBackground = require("../../assets/cloud-background.png")
     const weatherIcon = data ? data.weather[0].main.toLowerCase() : "clouds"
 

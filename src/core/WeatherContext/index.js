@@ -1,5 +1,4 @@
-import axios from "axios";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import theme from '../../core/globalTheme'
 
 export const WeatherContext = createContext()
