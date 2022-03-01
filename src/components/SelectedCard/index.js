@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import { useTheme } from "styled-components"
 import { WeatherContext } from "../../core/WeatherContext"
 import { dateConvert } from "../../utils/date"
 import { handleDegConvert } from "../../utils/degConvert"
