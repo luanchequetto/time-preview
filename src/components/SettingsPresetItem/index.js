@@ -7,7 +7,7 @@ export const SettingsPresetItem = ({ title, primaryBG, secondBG, sidebarBG, txtP
 
     const weatherContext = useContext(WeatherContext)
 
-    const { customTheme, setCustomTheme } = weatherContext
+    const { setCustomTheme } = weatherContext
 
     const handleSetTheme = () => {
         setCustomTheme({

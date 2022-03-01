@@ -7,7 +7,7 @@ export const SettingsColorItem = ({ title, property }) => {
 
     const weatherContext = useContext(WeatherContext)
 
-    const { customTheme, setCustomTheme } = weatherContext
+    const { setCustomTheme } = weatherContext
 
     return (
         <Item>

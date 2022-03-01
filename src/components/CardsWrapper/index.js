@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { WeatherContext } from "../../core/WeatherContext"
 import { ForecastCard } from "../ForecastCard"
-import { Card, CardsTitle, Wrapper } from "./styles"
+import { CardsTitle, Wrapper } from "./styles"
 
 
 export const CardsWrapper = () => {

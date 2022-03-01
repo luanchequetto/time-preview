@@ -6,7 +6,6 @@ import { Item } from "./styles"
 export const SettingsPreferenceItem = ({ title, property, options }) => {
 
     const weatherContext = useContext(WeatherContext)
-    console.log(weatherContext)
     const { preferences, setPreferences } = weatherContext
 
     return (

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import Modal from 'react-modal'
 import defaultTheme from '../../core/globalTheme'
 import { WeatherContext } from '../../core/WeatherContext'

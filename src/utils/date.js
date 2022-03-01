@@ -7,8 +7,6 @@ export const dateConvert = (unixDate, option)=>{
     let month = date.getMonth()
     const formatedMonth = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
     
-    let data = Date.now()
-    let dateNow = new Date(data * 1000)
 
     if(option === "fulldate"){
         return (`${hour > 9 ? hour : "0"+hour}:${minutes > 9 ? minutes : "0"+minutes} ${formatedMonth[month]} ${day}`)
