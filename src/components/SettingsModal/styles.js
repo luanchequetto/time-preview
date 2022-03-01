@@ -15,6 +15,7 @@ export const ListWrapper = styled.ul`
 export const ModalWrapper = styled.div`
     margin-bottom: 16px;
     position: relative;
+    overflow: hidden;
     .presets{
         margin-bottom: 16px;
     }

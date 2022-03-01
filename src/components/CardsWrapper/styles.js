@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 export const CardsTitle = styled.p`
-    margin-top: 32px;
+
     color: #FFF;
     font-weight: bold;
     font-size: 14px;
     margin-left: 8px;
+    height: auto;
+    margin-top: 32px;
+  
 `
 export const Wrapper = styled.div`
     display: flex;

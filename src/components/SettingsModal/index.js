@@ -33,8 +33,9 @@ export const SettingsModal = ({ modalIsOpen, setModalIsOpen }) => {
         content: {
             width: '50%',
             margin: 'auto',
-            height: '80%',
+            height: 'auto',
             borderRadius: '30px',
+            overflow: 'hidden',
         }
     }
 

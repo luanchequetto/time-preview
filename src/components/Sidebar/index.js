@@ -31,14 +31,14 @@ export const Sidebar = () => {
     return (
         <>
             <Tools>
+            <div className="date-wrapper">
+                    <DateTime textColor={weatherContext.customTheme.theme.textPrimaryColor}>{dateFormater(dateTime.getDate())}/{dateFormater(dateTime.getMonth() + 1)}</DateTime>
+                    <DateTime textColor={weatherContext.customTheme.theme.textSecondColor}>{dateFormater(dateTime.getHours())}:{dateFormater(dateTime.getMinutes())}</DateTime>
+                </div>
                 <div onClick={handleRefresh}>
                     <ToolImageIcon
                         src={require('../../assets/home.png')}
                         alt="home" />
-                </div>
-                <div className="date-wrapper">
-                    <DateTime textColor={weatherContext.customTheme.theme.textPrimaryColor}>{dateFormater(dateTime.getDate())}/{dateFormater(dateTime.getMonth() + 1)}</DateTime>
-                    <DateTime textColor={weatherContext.customTheme.theme.textSecondColor}>{dateFormater(dateTime.getHours())}:{dateFormater(dateTime.getMinutes())}</DateTime>
                 </div>
                 <div onClick={openModal}>
                     <ToolImageIcon

@@ -4,8 +4,9 @@ export const Card = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 2fr 1fr 1fr;
-    width: 160px;
-    height: 230px;
+    width: 30%;
+    max-width: 160px;
+    max-height: 230px;
     border: 1px solid ${props => props.theme.textSecondColor};
     border-radius: 30px;
     padding: 16px;
