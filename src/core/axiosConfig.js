@@ -1,3 +1,3 @@
-import axios from 'axios'
+import axios from "axios";
 
-axios.defaults.baseURL = 'https://api.openweathermap.org';
+axios.defaults.baseURL = "https://api.openweathermap.org";
