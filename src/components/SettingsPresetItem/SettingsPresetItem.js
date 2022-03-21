@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import { WeatherContext } from "../../core/WeatherContext";
+
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { Item } from "./styles";
 
 export const SettingsPresetItem = ({
@@ -10,15 +10,14 @@ export const SettingsPresetItem = ({
     txtPrimaryColor,
     txtSecondColor,
 }) => {
-    const weatherContext = useContext(WeatherContext);
+    const { setCustomTheme, customTheme } = useWeatherContext();
 
-    const { setCustomTheme } = weatherContext;
 
     const handleSetTheme = () => {
         setCustomTheme({
-            ...weatherContext.customTheme,
+            ...customTheme,
             theme: {
-                ...weatherContext.customTheme.theme,
+                ...customTheme.theme,
                 backgroundPrimaryColor: primaryBG,
                 backgroundSecondColor: secondBG,
                 sidebarColor: sidebarBG,

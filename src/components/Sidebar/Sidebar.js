@@ -1,15 +1,15 @@
 import { Tools, ToolImageIcon, DateTime } from "./styles";
 import Modal from "react-modal";
-import { useContext, useState } from "react";
-import { WeatherContext } from "../../core/WeatherContext";
+import { useState } from "react";
 import { SettingsModal } from "../SettingsModal";
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 
 Modal.setAppElement("#root");
 
 export const Sidebar = () => {
     const dateTime = new Date();
 
-    const weatherContext = useContext(WeatherContext);
+    const {setSearchData, customTheme} = useWeatherContext();
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const dateFormater = (value) => {
@@ -21,7 +21,7 @@ export const Sidebar = () => {
     }
 
     function handleRefresh() {
-        weatherContext.setSearchData("");
+        setSearchData("");
     }
 
     return (
@@ -29,13 +29,13 @@ export const Sidebar = () => {
             <Tools>
                 <div className="date-wrapper">
                     <DateTime
-                        textColor={weatherContext.customTheme.theme.textPrimaryColor}
+                        textColor={customTheme.theme.textPrimaryColor}
                     >
                         {dateFormater(dateTime.getDate())}/
                         {dateFormater(dateTime.getMonth() + 1)}
                     </DateTime>
                     <DateTime
-                        textColor={weatherContext.customTheme.theme.textSecondColor}
+                        textColor={customTheme.theme.textSecondColor}
                     >
                         {dateFormater(dateTime.getHours())}:
                         {dateFormater(dateTime.getMinutes())}

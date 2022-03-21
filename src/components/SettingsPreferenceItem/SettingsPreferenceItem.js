@@ -1,10 +1,9 @@
-import { useContext } from "react";
-import { WeatherContext } from "../../core/WeatherContext";
+
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { Item } from "./styles";
 
 export const SettingsPreferenceItem = ({ title, property, options }) => {
-    const weatherContext = useContext(WeatherContext);
-    const { preferences, setPreferences } = weatherContext;
+    const { preferences, setPreferences } = useWeatherContext()
 
     return (
         <Item>
@@ -15,7 +14,7 @@ export const SettingsPreferenceItem = ({ title, property, options }) => {
                         value={preferences[property]}
                         onChange={(e) => {
                             setPreferences({
-                                ...weatherContext.preferences,
+                                ...preferences,
                                 [property]: e.target.value,
                             });
                         }}

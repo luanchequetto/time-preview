@@ -1,18 +1,15 @@
-import { useContext } from "react";
-import { WeatherContext } from "../../core/WeatherContext";
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { ForecastCard } from "../ForecastCard";
 import { CardsTitle, Wrapper } from "./styles";
 
 export const CardsWrapper = () => {
-    const weatherContext = useContext(WeatherContext);
+    const {searchData} = useWeatherContext();
 
-    const data = weatherContext.searchData;
-
-    return data ? (
+    return searchData ? (
         <>
             <CardsTitle>Previsão da Semana:</CardsTitle>
             <Wrapper>
-                {data.daily.map((item, index) => {
+                {searchData.daily.map((item, index) => {
                     return <ForecastCard key={index} index={index} item={item} />;
                 })}
             </Wrapper>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useRef, useState } from "react";
 import theme from "../../core/globalTheme";
 
 export const WeatherContext = createContext();
@@ -12,6 +12,7 @@ export const WeatherProvider = ({ children }) => {
     const [customTheme, setCustomTheme] = useState(
         user_settings ? user_settings.customTheme : { theme }
     );
+    const effectRef = useRef(null)
     console.log("user", user_settings);
 
     const [preferences, setPreferences] = useState(
@@ -38,6 +39,7 @@ export const WeatherProvider = ({ children }) => {
                 setSelectedCardIndex,
                 customTheme,
                 setCustomTheme,
+                effectRef
             }}
         >
             {children}

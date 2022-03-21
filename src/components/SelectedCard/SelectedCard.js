@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { WeatherContext } from "../../core/WeatherContext";
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { dateConvert } from "../../utils/date";
 import { handleDegConvert } from "../../utils/degConvert";
 import { SelectedInfoItem } from "../SelectedInfoItem";
@@ -12,26 +11,26 @@ import {
 } from "./styles";
 
 export const SelectedCard = () => {
-    const weatherContext = useContext(WeatherContext);
+    const {preferences, selectedData, searchData, city, effectRef} = useWeatherContext();
 
-    const preferences = weatherContext.preferences;
     var data;
-    if (weatherContext.selectedData) {
-        data = weatherContext.selectedData;
+    if (selectedData) {
+        data = selectedData;
     } else {
-        let allData = weatherContext.searchData;
+        let allData = searchData;
         data = allData && allData.current;
     }
 
     const temperatureBackground = require("../../assets/cloud-background.png");
     const weatherIcon = data ? data.weather[0].main.toLowerCase() : "clouds";
 
+
     return (
-        <Wrapper className={data ? "" : "hidden"}>
-            <CardHeader className="effect">
+        <Wrapper className={data ? "" : "hidden"} ref={effectRef}>
+            <CardHeader className="effect-1">
                 <div>
                     <p>{data ? dateConvert(data.dt, "weekdayfull") : ""}</p>
-                    <h2>{weatherContext.city ? weatherContext.city : ""}</h2>
+                    <h2>{city ? city : ""}</h2>
                 </div>
                 <img
                     src={require(`../../assets/${weatherIcon}-dark.png`)}
@@ -39,7 +38,7 @@ export const SelectedCard = () => {
                 />
             </CardHeader>
 
-            <CardTemperature className={`effect`}>
+            <CardTemperature className={`effect-2`}>
                 <TemperatureWrapper
                     bg={temperatureBackground}
                     unit={preferences.units === "metric" ? "ºC" : "ºF"}
@@ -57,7 +56,7 @@ export const SelectedCard = () => {
                 </TemperatureWrapper>
             </CardTemperature>
 
-            <SomeInfos className="effect">
+            <SomeInfos className="effect-3">
                 {data ? (
                     <ul>
                         <SelectedInfoItem
@@ -88,9 +87,9 @@ export const SelectedCard = () => {
                         />
                         <SelectedInfoItem
                             title={"Coordenatas"}
-                            data={`[${parseFloat(weatherContext.searchData.lat).toFixed(
+                            data={`[${parseFloat(searchData.lat).toFixed(
                                 2
-                            )}, ${parseFloat(weatherContext.searchData.lon).toFixed(2)}]`}
+                            )}, ${parseFloat(searchData.lon).toFixed(2)}]`}
                         />
                     </ul>
                 ) : (

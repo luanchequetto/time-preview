@@ -10,7 +10,15 @@ export const Wrapper = styled.div`
   border-radius: 30px;
   padding: 24px;
   &.active {
-    animation: transitionEffect 0.5s forwards;
+    .effect-1{
+      animation: transitionEffect 0.5s forwards;
+    }
+    .effect-2{
+      animation: transitionEffect 1s forwards;
+    }
+    .effect-3{
+      animation: transitionEffect 1.5s forwards;
+    }
   }
 
   @media (max-width: 991px) {
@@ -62,9 +70,6 @@ export const CardTemperature = styled.section`
   margin-left: -24px;
   margin-right: -24px;
   height: 50%;
-  &.active {
-    animation: transitionEffect 0.5s forwards;
-  }
   &.hidden {
     display: none;
   }
@@ -120,9 +125,6 @@ export const SomeInfos = styled.section`
   border-top: solid 1px #8d7c99;
   padding: 24px 16px;
   height: 35%;
-  &.active {
-    animation: transitionEffect 0.5s forwards;
-  }
   @media (max-width: 991px) {
     margin-bottom: 32px;
   }

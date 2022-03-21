@@ -1,16 +1,13 @@
-import { useContext } from "react";
 import Modal from "react-modal";
 import defaultTheme from "../../core/globalTheme";
-import { WeatherContext } from "../../core/WeatherContext";
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { SettingsColorItem } from "../SettingsColorItem";
 import { SettingsPreferenceItem } from "../SettingsPreferenceItem";
 import { SettingsPresetItem } from "../SettingsPresetItem";
 import { CategoryTitle, ListWrapper, ModalWrapper, SaveButton } from "./styles";
 
 export const SettingsModal = ({ modalIsOpen, setModalIsOpen }) => {
-    const weatherContext = useContext(WeatherContext);
-
-    const { customTheme, preferences } = weatherContext;
+    const {customTheme, preferences} = useWeatherContext();
 
     function closeModal() {
         setModalIsOpen(false);

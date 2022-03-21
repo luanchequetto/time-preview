@@ -1,11 +1,8 @@
-import { useContext } from "react";
-import { WeatherContext } from "../../core/WeatherContext";
+import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { Item } from "./styles";
 
 export const SettingsColorItem = ({ title, property }) => {
-    const weatherContext = useContext(WeatherContext);
-
-    const { setCustomTheme } = weatherContext;
+    const {setCustomTheme, customTheme} = useWeatherContext();
 
     return (
         <Item>
@@ -13,12 +10,12 @@ export const SettingsColorItem = ({ title, property }) => {
                 <label>{title}</label>
                 <input
                     type="color"
-                    value={weatherContext.customTheme.theme[property]}
+                    value={customTheme.theme[property]}
                     onChange={(e) => {
                         setCustomTheme({
-                            ...weatherContext.customTheme,
+                            ...customTheme,
                             theme: {
-                                ...weatherContext.customTheme.theme,
+                                ...customTheme.theme,
                                 [property]: e.target.value,
                             },
                         });
