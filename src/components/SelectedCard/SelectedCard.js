@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useWeatherContext } from "../../hooks/useWeatherContext";
 import { dateConvert } from "../../utils/date";
 import { handleDegConvert } from "../../utils/degConvert";
@@ -11,7 +12,12 @@ import {
 } from "./styles";
 
 export const SelectedCard = () => {
-    const {preferences, selectedData, searchData, city, effectRef} = useWeatherContext();
+    const { preferences, selectedData, searchData, city, effectRef } = useWeatherContext();
+
+    const units = useMemo(() => {
+        let unit = preferences.units === "metric" ? "ºC" : "ºF"
+        return unit
+    }, [preferences])
 
     var data;
     if (selectedData) {
@@ -26,11 +32,11 @@ export const SelectedCard = () => {
 
 
     return (
-        <Wrapper className={data ? "" : "hidden"} ref={effectRef}>
+        <Wrapper className={!data && "hidden"} ref={effectRef}>
             <CardHeader className="effect-1">
                 <div>
-                    <p>{data ? dateConvert(data.dt, "weekdayfull") : ""}</p>
-                    <h2>{city ? city : ""}</h2>
+                    <p>{data && dateConvert(data.dt, "weekdayfull")}</p>
+                    <h2>{city && city}</h2>
                 </div>
                 <img
                     src={require(`../../assets/${weatherIcon}-dark.png`)}
@@ -41,23 +47,20 @@ export const SelectedCard = () => {
             <CardTemperature className={`effect-2`}>
                 <TemperatureWrapper
                     bg={temperatureBackground}
-                    unit={preferences.units === "metric" ? "ºC" : "ºF"}
+                    unit={units}
                 >
                     <h2>
-                        {data ? parseInt(data.temp.day ? data.temp.day : data.temp) : "0"}
+                        {data && parseInt(data.temp.day ?? data.temp)}
                     </h2>
                     <p>
-                        {data
-                            ? data.weather[0].description[0].toUpperCase() +
-                            data.weather[0].description.substr(1)
-                            : ""}
+                        {data && data.weather[0].description[0].toUpperCase() + data.weather[0].description.substr(1)}
                     </p>
-                    <p>{data ? dateConvert(data.dt, "fulldate") : ""}</p>
+                    <p>{data && dateConvert(data.dt, "fulldate")}</p>
                 </TemperatureWrapper>
             </CardTemperature>
 
             <SomeInfos className="effect-3">
-                {data ? (
+                {data && (
                     <ul>
                         <SelectedInfoItem
                             title={"Vento"}
@@ -92,8 +95,6 @@ export const SelectedCard = () => {
                             )}, ${parseFloat(searchData.lon).toFixed(2)}]`}
                         />
                     </ul>
-                ) : (
-                    <></>
                 )}
             </SomeInfos>
         </Wrapper>

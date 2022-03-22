@@ -16,12 +16,10 @@ export const WeatherProvider = ({ children }) => {
     console.log("user", user_settings);
 
     const [preferences, setPreferences] = useState(
-        user_settings
-            ? user_settings.preferences
-            : {
-                units: "metric",
-                lang: "pt_br",
-            }
+        user_settings?.preferences ?? {
+            units: "metric",
+            lang: "pt_br",
+        }
     );
 
     return (
