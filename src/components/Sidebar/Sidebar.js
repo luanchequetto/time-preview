@@ -1,15 +1,12 @@
 import { Tools, ToolImageIcon, DateTime } from "./styles";
-import Modal from "react-modal";
 import { useState } from "react";
 import { SettingsModal } from "../SettingsModal";
 import { useWeatherContext } from "../../hooks/useWeatherContext";
 
-Modal.setAppElement("#root");
-
 export const Sidebar = () => {
     const dateTime = new Date();
 
-    const {setSearchData, customTheme} = useWeatherContext();
+    const { setSearchData, customTheme } = useWeatherContext();
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const dateFormater = (value) => {
@@ -27,7 +24,7 @@ export const Sidebar = () => {
     return (
         <>
             <Tools>
-                <div className="date-wrapper">
+                <div data-testid="date-wrapper">
                     <DateTime
                         textColor={customTheme.theme.textPrimaryColor}
                     >
@@ -41,10 +38,10 @@ export const Sidebar = () => {
                         {dateFormater(dateTime.getMinutes())}
                     </DateTime>
                 </div>
-                <div onClick={handleRefresh} role='button' tabIndex={0} onKeyDown={e => { e.key === 13 && handleRefresh }}>
+                <div data-testid="home-button" onClick={handleRefresh} role='button' tabIndex={0} onKeyDown={e => { e.key === 13 && handleRefresh }}>
                     <ToolImageIcon src={require("../../assets/home.png")} alt="home" />
                 </div>
-                <div onClick={openModal} role='button' tabIndex={0} onKeyDown={e => { e.key === 13 && openModal }}>
+                <div data-testid="settings-button" onClick={openModal} role='button' tabIndex={0} onKeyDown={e => { e.key === 13 && openModal }}>
                     <ToolImageIcon
                         src={require("../../assets/settings.png")}
                         alt="settings"

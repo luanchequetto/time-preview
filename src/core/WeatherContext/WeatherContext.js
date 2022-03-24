@@ -5,10 +5,10 @@ export const WeatherContext = createContext();
 
 export const WeatherProvider = ({ children }) => {
     const user_settings = JSON.parse(localStorage.getItem("user_settings"));
-    const [searchData, setSearchData] = useState();
-    const [selectedData, setSelectedData] = useState();
-    const [selectedCardIndex, setSelectedCardIndex] = useState();
-    const [city, setCity] = useState();
+    const [searchData, setSearchData] = useState("");
+    const [selectedData, setSelectedData] = useState("");
+    const [selectedCardIndex, setSelectedCardIndex] = useState(0);
+    const [city, setCity] = useState("");
     const [customTheme, setCustomTheme] = useState(
         user_settings ? user_settings.customTheme : { theme }
     );

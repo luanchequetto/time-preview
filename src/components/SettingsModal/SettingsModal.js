@@ -7,7 +7,8 @@ import { SettingsPresetItem } from "../SettingsPresetItem";
 import { CategoryTitle, ListWrapper, ModalWrapper, SaveButton } from "./styles";
 
 export const SettingsModal = ({ modalIsOpen, setModalIsOpen }) => {
-    const {customTheme, preferences} = useWeatherContext();
+    const { customTheme, preferences } = useWeatherContext();
+    process.env.NODE_ENV !== 'test' && Modal.setAppElement('#root');
 
     function closeModal() {
         setModalIsOpen(false);
